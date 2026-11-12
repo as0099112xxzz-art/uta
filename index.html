@@ -331,7 +331,7 @@ header .sub {
 }
 
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
-[12/11/2026 09:06 م] ᴳᴿ 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 | جنرال: .flip-front, .flip-back {
+.flip-front, .flip-back {
   position: absolute;
   inset: 0;
   display: flex;
@@ -905,7 +905,7 @@ function startCounter() {
 document.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => card.classList.toggle('flipped'));
 });
-[12/11/2026 09:06 م] ᴳᴿ 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 | جنرال: /* =========================================================
+ /* =========================================================
    6) المفاجأة — التحقق من العمر 18
    ========================================================= */
 const surpriseBtn   = document.getElementById('surpriseBtn');
