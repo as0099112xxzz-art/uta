@@ -1,0 +1,999 @@
+[12/11/2026 09:06 م] ᴳᴿ 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 | جنرال: <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTA | يوتا</title>
+
+<style>
+/* ================== الأساسيات ================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  color: #fff;
+  background: url('saja.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+/* طبقة التعتيم فوق الخلفية لتبقى الخلفية شفافة ومقروءة */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,8,30,.72), rgba(30,10,45,.78));
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 25px 16px 70px;
+}
+
+/* ================== الهيدر ================== */
+header { text-align: center; margin-bottom: 22px; }
+
+header h1 {
+  font-size: 3rem;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #ffd6ec, #c084fc, #7dd3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(192,132,252,.5);
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 6px rgba(192,132,252,.4)); }
+  to   { filter: drop-shadow(0 0 22px rgba(125,211,252,.8)); }
+}
+
+header .sub {
+  margin-top: 6px;
+  color: #e9d5ff;
+  font-size: 1rem;
+  opacity: .9;
+}
+
+/* ================== التبويبات ================== */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
+.tab {
+  flex: 1 1 160px;
+  padding: 13px 12px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 14px;
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: .95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .35s;
+}
+
+.tab:hover { background: rgba(255,255,255,.18); transform: translateY(-3px); }
+
+.tab.active {
+  background: linear-gradient(135deg, rgba(192,132,252,.55), rgba(125,211,252,.45));
+  border-color: rgba(255,255,255,.6);
+  box-shadow: 0 0 22px rgba(192,132,252,.5);
+}
+
+/* ================== الأقسام ================== */
+.section { display: none; animation: fadeUp .55s ease; }
+.section.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-glass {
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 22px;
+  padding: 28px 22px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 40px rgba(0,0,0,.4);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 22px;
+  color: #f5d0fe;
+  text-shadow: 0 0 18px rgba(245,208,254,.6);
+}
+
+/* ================== معلومات ================== */
+.info-list { display: grid; gap: 14px; }
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px;
+  border-radius: 15px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  transition: .3s;
+}
+
+.info-row:hover {
+  background: rgba(255,255,255,.15);
+  transform: translateX(-6px);
+  border-color: rgba(192,132,252,.6);
+}
+
+.info-label { color: #c4b5fd; font-weight: bold; font-size: .95rem; }
+.info-value { font-size: 1.05rem; font-weight: bold; color: #fff; }
+.info-value a { color: #7dd3fc; text-decoration: none; }
+.info-value a:hover { text-decoration: underline; }
+
+/* ================== ضمانات ================== */
+.guarantee-box {
+  text-align: center;
+  padding: 32px 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(192,132,252,.22), rgba(125,211,252,.16));
+  border: 1px solid rgba(255,255,255,.28);
+}
+
+.guarantee-badge {
+  display: inline-block;
+  padding: 9px 22px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #c084fc, #7dd3fc);
+  color: #1a0b2e;
+  font-weight: bold;
+  margin-bottom: 18px;
+  box-shadow: 0 0 25px rgba(192,132,252,.7);
+}
+
+.guarantee-text { font-size: 1.25rem; line-height: 2; }
+
+.guarantee-text .name { color: #fbbf24; font-weight: bold; }
+
+.guarantee-user {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(0,0,0,.35);
+  border: 1px dashed rgba(125,211,252,.7);
+  color: #7dd3fc;
+  font-weight: bold;
+  direction: ltr;
+}
+
+/* ================== المتجر ================== */
+.store-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 30px 22px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.store-msg {
+  flex: 1 1 260px;
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #fde68a;
+  text-shadow: 0 0 18px rgba(253,230,138,.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: .6; }
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #22c55e, #0ea5e9);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(34,197,94,.6);
+  transition: .3s;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-btn:hover { transform: scale(1.07); box-shadow: 0 0 40px rgba(34,197,94,.9); }
+
+.contact-btn svg { width: 24px; height: 24px; fill: #fff; }
+
+/* ================== القسم الخاص ================== */
+.lock-box { text-align: center; padding: 35px 20px; }
+
+.lock-icon { font-size: 3.2rem; margin-bottom: 14px; animation: float 2.5s ease-in-out infinite; }
+
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+.lock-box p { margin-bottom: 16px; color: #e9d5ff; }
+
+.pass-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  font-size: 1.05rem;
+  text-align: center;
+  letter-spacing: 3px;
+  outline: none;
+  transition: .3s;
+}
+
+.pass-input:focus { border-color: #c084fc; box-shadow: 0 0 22px rgba(192,132,252,.7); }
+
+.btn-main {
+  margin-top: 16px;
+  padding: 13px 34px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #c084fc, #7dd3fc);
+  color: #1a0b2e;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: .3s;
+  box-shadow: 0 0 22px rgba(192,132,252,.6);
+}
+
+.btn-main:hover { transform: scale(1.06); box-shadow: 0 0 38px rgba(125,211,252,.9); }
+
+.error-msg { color: #f87171; margin-top: 12px; font-weight: bold; min-height: 22px; }
+
+/* ================== العداد ================== */
+.counter-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 20px;
+  color: #f5d0fe;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 14px;
+  max-width: 620px;
+  margin: 0 auto 34px;
+}
+
+.counter-cell {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 16px;
+  padding: 16px 8px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.counter-num {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #7dd3fc;
+  text-shadow: 0 0 16px rgba(125,211,252,.8);
+}
+
+.counter-lbl { font-size: .8rem; color: #d8b4fe; margin-top: 5px; }
+
+/* ================== الكروت المقلوبة ================== */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.flip-card { perspective: 1000px; height: 150px; cursor: pointer; }
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform .8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+[12/11/2026 09:06 م] ᴳᴿ 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 | جنرال: .flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  font-weight: bold;
+  border: 1px solid rgba(255,255,255,.3);
+}
+
+.flip-front {
+  background: linear-gradient(135deg, rgba(192,132,252,.45), rgba(125,211,252,.35));
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.flip-back {
+  background: linear-gradient(135deg, rgba(251,191,36,.45), rgba(244,114,182,.45));
+  transform: rotateY(180deg);
+  font-size: 1.15rem;
+  color: #fff;
+  text-shadow: 0 0 14px rgba(255,255,255,.6);
+}
+
+/* ================== الأبيات ================== */
+.poems-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 22px;
+  color: #fbcfe8;
+  text-shadow: 0 0 18px rgba(251,207,232,.7);
+}
+
+.poem {
+  background: rgba(255,255,255,.07);
+  border-right: 4px solid #c084fc;
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  line-height: 2.1;
+  font-size: 1.02rem;
+  white-space: pre-line;
+  transition: .35s;
+}
+
+.poem:hover {
+  background: rgba(255,255,255,.14);
+  transform: translateX(-6px);
+  border-right-color: #7dd3fc;
+}
+
+.poem-num {
+  display: block;
+  font-weight: bold;
+  color: #fbbf24;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+/* ================== زر المفاجأة ================== */
+.surprise-wrap { text-align: center; margin-top: 40px; }
+
+.surprise-btn {
+  padding: 18px 46px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1a0b2e;
+  background: linear-gradient(135deg, #fbbf24, #f472b6, #c084fc);
+  background-size: 200% 200%;
+  animation: gradMove 4s ease infinite;
+  box-shadow: 0 0 35px rgba(244,114,182,.7);
+  transition: .3s;
+}
+
+.surprise-btn:hover { transform: scale(1.08); }
+
+@keyframes gradMove {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ================== النوافذ المنبثقة ================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5,0,15,.85);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  padding: 18px;
+}
+
+.modal.show { display: flex; animation: fadeUp .4s ease; }
+
+.modal-box {
+  background: rgba(35,15,55,.95);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 22px;
+  padding: 32px 24px;
+  max-width: 430px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(192,132,252,.5);
+}
+
+.modal-box h3 { font-size: 1.4rem; margin-bottom: 16px; color: #f5d0fe; }
+
+.modal-close {
+  margin-top: 18px;
+  padding: 11px 28px;
+  border: none;
+  border-radius: 50px;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.modal-close:hover { background: rgba(255,255,255,.32); }
+
+/* ================== رسالة عيد الميلاد ================== */
+.bday-screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  background: rgba(10,0,25,.92);
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.bday-screen.show { display: flex; }
+
+.bday-content { position: relative; z-index: 2; max-width: 620px; animation: fadeUp .8s ease; }
+
+.bday-content h2 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #fbbf24, #f472b6, #7dd3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glow 2s infinite alternate;
+}
+
+.bday-content p {
+  font-size: 1.15rem;
+  line-height: 2.1;
+  color: #f5d0fe;
+  margin-bottom: 14px;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 16px;
+  top: -25px;
+  z-index: 1;
+  opacity: .95;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(105vh) rotate(760deg); opacity: 0; }
+}
+
+.balloon {
+  position: fixed;
+  bottom: -160px;
+  font-size: 3rem;
+  z-index: 1;
+  animation: rise linear forwards;
+}
+
+@keyframes rise {
+  to { transform: translateY(-125vh); }
+}
+
+/* ================== زر الموسيقى ================== */
+.music-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 900;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.14);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn:hover { background: rgba(255,255,255,.28); transform: scale(1.1); }
+
+.music-btn.playing { box-shadow: 0 0 25px rgba(125,211,252,.9); animation: spin 3s linear infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ================== الموبايل ================== */
+@media (max-width: 600px) {
+  header h1 { font-size: 2.2rem; }
+  .section-title { font-size: 1.3rem; }
+  .counter-num { font-size: 1.45rem; }
+  .store-wrap { justify-content: center; text-align: center; }
+  .store-msg { font-size: 1.1rem; }
+  .bday-content h2 { font-size: 1.7rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============ الموسيقى ============ -->
+<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+<button class="music-btn" id="musicBtn" title="تشغيل / إيقاف الموسيقى">🎵</button>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+  <!-- ============ الهيدر ============ -->
+  <header>
+    <h1>UTA</h1>
+    <p class="sub">أهلاً بكِ في عالمكِ الخاص 🤍</p>
+  </header>
+
+  <!-- ============ التبويبات ============ -->
+  <nav class="tabs">
+    <button class="tab active" data-target="sec1">معلومات نور</button>
+    <button class="tab" data-target="sec2">ضمانات</button>
+    <button class="tab" data-target="sec3">متجر UTA</button>
+    <button class="tab" data-target="sec4">معلومات خاصة</button>
+  </nav>
+
+  <main>
+
+    <!-- ============ القسم الأول ============ -->
+    <section id="sec1" class="section active">
+      <div class="card-glass">
+        <h2 class="section-title">✨ معلومات نور ✨</h2>
+        <div class="info-list">
+
+          <div class="info-row">
+            <span class="info-label">الاسم</span>
+            <span class="info-value">نور</span>
+          </div>
+
+          <div class="info-row">
+            <span class="info-label">العمر</span>
+            <span class="info-value">18 سنة</span>
+          </div>
+
+          <div class="info-row">
+            <span class="info-label">المهنة</span>
+            <span class="info-value">وسيطة</span>
+          </div>
+
+          <div class="info-row">
+            <span class="info-label">يوزر التليجرام</span>
+            <span class="info-value">
+              <a href="https://t.me/lelelee" target="_blank">@lelelee</a>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ القسم الثاني ============ -->
+    <section id="sec2" class="section">
+      <div class="card-glass">
+        <h2 class="section-title">🛡️ ضمانات 🛡️</h2>
+
+        <div class="guarantee-box">
+          <div class="guarantee-badge">ضمان شامل ومضمون</div>
+
+          <p class="guarantee-text">
+            مضمونة شامل من <span class="name">GENERAL</span><br>
+            وسيط مشهور داخل منصة تليجرام
+          </p>
+
+          <div class="guarantee-user">@m_5_1_q</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ القسم الثالث ============ -->
+    <section id="sec3" class="section">
+      <div class="card-glass">
+        <h2 class="section-title">🛒 متجر UTA 🛒</h2>
+
+        <div class="store-wrap">
+          <div class="store-msg">⏳ انتظرونا… سيتم إضافة الحسابات قريباً</div>
+
+          <!-- تم تعديل الآي دي هنا -->
+          <a class="contact-btn" href="tg://user?id=6202634205" target="_blank">
+            <svg viewBox="0 0 24 24">
+              <path d="M9.04 15.51l-.37 5.2c.53 0 .76-.23 1.04-.5l2.5-2.4 5.18 3.79c.95.52 1.62.25 1.88-.88l3.4-15.94.01-.01c.3-1.4-.5-1.95-1.44-1.6L1.13 9.9c-1.36.53-1.34 1.29-.23 1.63l4.86 1.52L17.05 6.3c.53-.35 1.02-.16.62.19L9.04 15.51z"/>
+            </svg>
+            تواصل الان
+          </a>
+        </div>
+      </div>
+    </section>
+[12/11/2026 09:06 م] ᴳᴿ 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 | جنرال: <!-- ============ القسم الرابع ============ -->
+    <section id="sec4" class="section">
+      <div class="card-glass">
+
+        <!-- شاشة كلمة المرور -->
+        <div id="lockBox" class="lock-box">
+          <div class="lock-icon">🔒</div>
+          <p>ادخل كلمة المرور</p>
+          <input type="password" id="passInput" class="pass-input" placeholder="••••" autocomplete="off">
+          <br>
+          <button class="btn-main" id="passBtn">دخول</button>
+          <div class="error-msg" id="passError"></div>
+        </div>
+
+        <!-- المحتوى بعد كلمة المرور -->
+        <div id="secretContent" style="display:none;">
+
+          <h2 class="counter-title">💗 مدة صداقتنا 💗</h2>
+
+          <div class="counter-grid">
+            <div class="counter-cell">
+              <div class="counter-num" id="cDays">0</div>
+              <div class="counter-lbl">يوم</div>
+            </div>
+            <div class="counter-cell">
+              <div class="counter-num" id="cHours">0</div>
+              <div class="counter-lbl">ساعة</div>
+            </div>
+            <div class="counter-cell">
+              <div class="counter-num" id="cMins">0</div>
+              <div class="counter-lbl">دقيقة</div>
+            </div>
+            <div class="counter-cell">
+              <div class="counter-num" id="cSecs">0</div>
+              <div class="counter-lbl">ثانية</div>
+            </div>
+          </div>
+
+          <!-- الكروت -->
+          <div class="cards-row">
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">انقر هنا</div>
+                <div class="flip-back">افضل انسانه قابلتها</div>
+              </div>
+            </div>
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">انقر هنا</div>
+                <div class="flip-back">اشطر تاجره</div>
+              </div>
+            </div>
+            <div class="flip-card">
+              <div class="flip-inner">
+                <div class="flip-front">انقر هنا</div>
+                <div class="flip-back">افضل انسانه قابلتها</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- الأبيات -->
+          <h2 class="poems-title">💌 أبيات ل ابنتي 💌</h2>
+
+          <div class="poem">
+            <span class="poem-num">— أبيات ١ —</span>
+صديقتي… يا من سكنتِ الروحَ والقلبا
+وأصبحتِ في دنيايَ أغلى ما أرى
+نورٌ أضاء دروبيَ الحيرى
+فأزاح عن قلبي الظلامَ والكدرا
+          </div>
+
+          <div class="poem">
+            <span class="poem-num">— أبيات ٢ —</span>
+لو تعلمين كم أشتاقُ لضحكتكِ
+وكيف أخافُ عليكِ من زمني وحزني
+أنتِ السندُ في وقتٍ أصبح فيهِ الندى نادرا
+فلا تحرميني من دعاءٍ أحملكِ فيهِ دائما
+          </div>
+
+          <div class="poem">
+            <span class="poem-num">— أبيات ٣ —</span>
+في صداقتنا وجدتُ معنى الأمان
+ووجدتُ في قلبِكِ أجملَ مكان
+يا نورَ أيامي… يا أجملَ عنوان
+سأظل أحفظكِ في القلبِ مدى الزمان
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ زر المفاجأة ============ -->
+  <div class="surprise-wrap">
+    <button class="surprise-btn" id="surpriseBtn">🎁 مكافأة ليكي 🎁</button>
+  </div>
+
+</div>
+
+<!-- ============ نافذة المفاجأة ============ -->
+<div class="modal" id="surpriseModal">
+  <div class="modal-box">
+    <h3>🎂 اكتبي عمرك</h3>
+    <input type="number" id="ageInput" class="pass-input" placeholder="العمر" style="letter-spacing:0;">
+    <br>
+    <button class="btn-main" id="ageBtn">تأكيد</button>
+    <div class="error-msg" id="ageError"></div>
+    <button class="modal-close" id="surpriseClose">إغلاق</button>
+  </div>
+</div>
+
+<!-- ============ شاشة عيد الميلاد ============ -->
+<div class="bday-screen" id="bdayScreen">
+  <div class="bday-content">
+    <h2>🎉 كل عام وانتي بخير 🎉</h2>
+    <p>كل عام وانتي بخير وصحه وعافيه 🤍</p>
+    <p>دي هديه بسيطه فضلت شغال عليها كام يوم<br>بهدف اسعادك… اتمني تكون عجبتك 🎈</p>
+    <button class="modal-close" id="bdayClose">إغلاق</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   1) الموسيقى
+   ========================================================= */
+const music      = document.getElementById('bgMusic');
+const musicBtn   = document.getElementById('musicBtn');
+let musicStarted = false;
+
+function playMusic() {
+  music.volume = 0.55;
+  const p = music.play();
+  if (p !== undefined) {
+    p.then(() => {
+      musicStarted = true;
+      musicBtn.classList.add('playing');
+      musicBtn.textContent = '⏸';
+    }).catch(() => {
+      musicBtn.classList.remove('playing');
+      musicBtn.textContent = '🎵';
+    });
+  }
+}
+
+window.addEventListener('load', playMusic);
+
+['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
+  document.addEventListener(evt, function firstTouch() {
+    if (!musicStarted) playMusic();
+    document.removeEventListener(evt, firstTouch);
+  }, { passive: true });
+});
+
+musicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (music.paused) {
+    playMusic();
+  } else {
+    music.pause();
+    musicStarted = false;
+    musicBtn.classList.remove('playing');
+    musicBtn.textContent = '🎵';
+  }
+});
+
+/* =========================================================
+   2) التبويبات (الأقسام)
+   ========================================================= */
+const tabs     = document.querySelectorAll('.tab');
+const sections = document.querySelectorAll('.section');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.target).classList.add('active');
+  });
+});
+
+/* =========================================================
+   3) القسم الرابع — كلمة المرور
+   ========================================================= */
+const passInput   = document.getElementById('passInput');
+const passBtn     = document.getElementById('passBtn');
+const passError   = document.getElementById('passError');
+const lockBox     = document.getElementById('lockBox');
+const secretContent = document.getElementById('secretContent');
+
+const SECRET_PASSWORD = 'UTA';
+
+function checkPassword() {
+  const value = passInput.value.trim();
+
+  if (value.toUpperCase() === SECRET_PASSWORD) {
+    passError.textContent = '';
+    lockBox.style.display = 'none';
+    secretContent.style.display = 'block';
+    startCounter();
+    secretContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    passError.textContent = '❌ كلمة المرور غير صحيحة، حاول مرة أخرى';
+    passInput.value = '';
+    passInput.focus();
+  }
+}
+
+passBtn.addEventListener('click', checkPassword);
+passInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+
+/* =========================================================
+   4) عداد مدة الصداقة — تم التعديل ليبدأ من 25 أكتوبر 2026
+   ========================================================= */
+const START_DATE = new Date('2026-10-25T00:00:00').getTime();
+let counterInterval = null;
+
+function updateCounter() {
+  const now = Date.now();
+  let diff = now - START_DATE;
+
+  if (diff < 0) diff = Math.abs(diff);
+
+  const totalSec = Math.floor(diff / 1000);
+
+  const days  = Math.floor(totalSec / 86400);
+  const hours = Math.floor((totalSec % 86400) / 3600);
+  const mins  = Math.floor((totalSec % 3600) / 60);
+  const secs  = totalSec % 60;
+
+  document.getElementById('cDays').textContent  = days.toLocaleString('en-US');
+  document.getElementById('cHours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cMins').textContent  = String(mins).padStart(2, '0');
+  document.getElementById('cSecs').textContent  = String(secs).padStart(2, '0');
+}
+
+function startCounter() {
+  if (counterInterval) return;
+  updateCounter();
+  counterInterval = setInterval(updateCounter, 1000);
+}
+
+/* =========================================================
+   5) الكروت المقلوبة
+   ========================================================= */
+document.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+});
+[12/11/2026 09:06 م] ᴳᴿ 𝐆𝐄𝐍𝐄𝐑𝐀𝐋 | جنرال: /* =========================================================
+   6) المفاجأة — التحقق من العمر 18
+   ========================================================= */
+const surpriseBtn   = document.getElementById('surpriseBtn');
+const surpriseModal = document.getElementById('surpriseModal');
+const surpriseClose = document.getElementById('surpriseClose');
+const ageInput      = document.getElementById('ageInput');
+const ageBtn        = document.getElementById('ageBtn');
+const ageError      = document.getElementById('ageError');
+const bdayScreen    = document.getElementById('bdayScreen');
+const bdayClose     = document.getElementById('bdayClose');
+
+// تم تغيير العمر المطلوب لـ 18
+const REQUIRED_AGE = 18;
+
+surpriseBtn.addEventListener('click', () => {
+  ageInput.value = '';
+  ageError.textContent = '';
+  surpriseModal.classList.add('show');
+  setTimeout(() => ageInput.focus(), 200);
+});
+
+surpriseClose.addEventListener('click', () => surpriseModal.classList.remove('show'));
+
+ageBtn.addEventListener('click', checkAge);
+ageInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkAge(); });
+
+function checkAge() {
+  const age = parseInt(ageInput.value.trim(), 10);
+
+  if (age === REQUIRED_AGE) {
+    surpriseModal.classList.remove('show');
+    showBirthday();
+  } else {
+    ageError.textContent = '❌ العمر غير صحيح، حاول مرة أخرى';
+    ageInput.value = '';
+    ageInput.focus();
+  }
+}
+
+/* =========================================================
+   7) تأثير عيد الميلاد (قصاصات + بالونات)
+   ========================================================= */
+function showBirthday() {
+  bdayScreen.classList.add('show');
+  createConfetti();
+  createBalloons();
+}
+
+function createConfetti() {
+  const colors = ['#fbbf24', '#f472b6', '#7dd3fc', '#c084fc', '#34d399', '#fff'];
+  for (let i = 0; i < 120; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.animationDuration = (2.5 + Math.random() * 3) + 's';
+    c.style.animationDelay = (Math.random() * 2) + 's';
+    c.style.width = (6 + Math.random() * 8) + 'px';
+    c.style.height = (10 + Math.random() * 12) + 'px';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 8000);
+  }
+}
+
+function createBalloons() {
+  const emojis = ['🎈', '🎈', '🎉', '🎂', '💜', '💖'];
+  for (let i = 0; i < 16; i++) {
+    const b = document.createElement('div');
+    b.className = 'balloon';
+    b.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    b.style.left = Math.random() * 95 + 'vw';
+    b.style.animationDuration = (6 + Math.random() * 5) + 's';
+    b.style.animationDelay = (Math.random() * 3) + 's';
+    b.style.fontSize = (2 + Math.random() * 2) + 'rem';
+    document.body.appendChild(b);
+    setTimeout(() => b.remove(), 15000);
+  }
+}
+
+bdayClose.addEventListener('click', () => bdayScreen.classList.remove('show'));
+
+surpriseModal.addEventListener('click', e => {
+  if (e.target === surpriseModal) surpriseModal.classList.remove('show');
+});
+bdayScreen.addEventListener('click', e => {
+  if (e.target === bdayScreen) bdayScreen.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
